@@ -1,0 +1,314 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "f0139798-b80f-4985-87fa-596bc038dcb3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "What is the length of the reservoir in the x-direction?\n",
+      " 1200\n",
+      "What is the length of the reservoir in the y-direction?\n",
+      " 1200\n",
+      "How many gridblocks are in the x-direction?\n",
+      " 3\n",
+      "How many gridblocks are in the y-direction?\n",
+      " 2\n",
+      "What is the permeability cut-off value?\n",
+      " 30\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The Resevoir has been discretized into a 3 by 2 resevoir with each gridblock having an area of 5.509641873278237 acres assuming structured grid type\n",
+      "\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "LXX = float(input('What is the length of the reservoir in the x-direction?\\n'))\n",
+    "LYY = float(input('What is the length of the reservoir in the y-direction?\\n'))\n",
+    "nxx = int(input('How many gridblocks are in the x-direction?\\n'))\n",
+    "nyy = int(input('How many gridblocks are in the y-direction?\\n'))\n",
+    "\n",
+    "\n",
+    "L_XX = LXX/nxx\n",
+    "\n",
+    "L_YY = LYY/nyy\n",
+    "\n",
+    "A_GB = (L_XX * L_YY)/43560\n",
+    "\n",
+    "print(f'The Resevoir has been discretized into a {nxx} by {nyy} resevoir with each gridblock having an area of {A_GB} acres assuming structured grid type\\n\\n')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "58401e11-0527-4bfa-9379-ff68040e1e3e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "What is the permeability cut-off value?\n",
+      " 30\n"
+     ]
+    }
+   ],
+   "source": [
+    "perm_co = float(input('What is the permeability cut-off value?\\n'))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "d2b31efe-9f90-4dcf-b04a-27d252a6ea27",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "n_active = 0\n",
+    "n_nactive = 0"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "2c22cb34-4eb1-450f-904a-dcdc86d09ca3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Hello user,currently working on gridblock 1.Thank you.\n",
+      "\n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "What is the permeabilty of gridblock 1 in mD?\n",
+      " 30\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "gridblock1 is active\n",
+      "\n",
+      "Hello user,currently working on gridblock 2.Thank you.\n",
+      "\n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "What is the permeabilty of gridblock 2 in mD?\n",
+      " 25\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "gridblock2 is inactive\n",
+      "\n",
+      "\n",
+      "Hello user,currently working on gridblock 3.Thank you.\n",
+      "\n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "What is the permeabilty of gridblock 3 in mD?\n",
+      " 24\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "gridblock3 is inactive\n",
+      "\n",
+      "\n",
+      "There is/are 1 active gridblocks in layer 1.\n",
+      "\n",
+      "There is/are 2 inactive gridblocks in layer 1.\n",
+      "\n",
+      "Hello user,currently working on gridblock 4.Thank you.\n",
+      "\n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "What is the permeabilty of gridblock 4 in mD?\n",
+      " 35\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "gridblock4 is active\n",
+      "\n",
+      "Hello user,currently working on gridblock 5.Thank you.\n",
+      "\n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "What is the permeabilty of gridblock 5 in mD?\n",
+      " 30\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "gridblock5 is active\n",
+      "\n",
+      "Hello user,currently working on gridblock 6.Thank you.\n",
+      "\n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "What is the permeabilty of gridblock 6 in mD?\n",
+      " 45\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "gridblock6 is active\n",
+      "\n",
+      "There is/are 3 active gridblocks in layer 2.\n",
+      "\n",
+      "There is/are 0 inactive gridblocks in layer 2.\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "for row in range(1,nyy + 1):\n",
+    "    nn_active = 0\n",
+    "    nn_nactive = 0\n",
+    "    for col in range(1,nxx + 1):\n",
+    "        nat_order = (nxx * (row-1)) + col\n",
+    "        print(f'Hello user,currently working on gridblock {nat_order}.Thank you.\\n')\n",
+    "        perm = float(input(f'What is the permeabilty of gridblock {nat_order} in mD?\\n'))\n",
+    "        if perm < perm_co:\n",
+    "            nn_nactive = nn_nactive + 1\n",
+    "            n_nactive = n_nactive + 1\n",
+    "            print(f'gridblock{nat_order} is inactive\\n\\n')\n",
+    "\n",
+    "        else:\n",
+    "            nn_active = nn_active + 1\n",
+    "            n_active = n_active + 1\n",
+    "            print(f'gridblock{nat_order} is active\\n')\n",
+    "\n",
+    "    print(f'There is/are {nn_active} active gridblocks in layer {row}.\\n')\n",
+    "    print(f'There is/are {nn_nactive} inactive gridblocks in layer {row}.\\n')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "f501718e-c8bd-45bf-b09e-57c7e1d94534",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "There is/are 4 active gridblocks in the reservoir.\n",
+      "\n",
+      "There is/are 2 inactive gridblocks in the reservoir.\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(f'There is/are {n_active} active gridblocks in the reservoir.\\n')\n",
+    "\n",
+    "print(f'There is/are {n_nactive} inactive gridblocks in the reservoir.\\n')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "98f66a0f-c8f3-4839-970b-10ecfed83a34",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The percentage of active gridblocks in the reservoir is 0.67\n",
+      "\n",
+      "\n",
+      "Assignment 3 completed, Thank you user\n"
+     ]
+    }
+   ],
+   "source": [
+    "To_grid = nxx * nyy\n",
+    "\n",
+    "Per_active = n_active/To_grid\n",
+    "\n",
+    "\n",
+    "print(f'The percentage of active gridblocks in the reservoir is {round(Per_active,2)}\\n\\n')\n",
+    "print(f'Assignment 3 completed, Thank you user')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d02be64f-7f94-496f-8ee2-a6c6835020f1",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python [conda env:base] *",
+   "language": "python",
+   "name": "conda-base-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
